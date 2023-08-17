@@ -1,10 +1,10 @@
 #!/bin/bash
-set -e
+set -ex
 
 echo "Activating feature 'Tiny Go'"
 
-# Tiny Go version 
-VERSION=${VERSION:-"0.27.0"}
+# Tiny Go version
+VERSION=${VERSION:-"0.28.1"}
 ARCHITECTURE="amd64"
 
 if [ "$(dpkg --print-architecture)" ==  "arm64" ]; then

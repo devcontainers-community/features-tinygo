@@ -6,7 +6,7 @@
     "options": {
         "version": {
             "type": "string",
-            "default": "0.27,0",
+            "default": "0.28.1",
             "description": "Specify a version of Tiny Go"
         }
     },
