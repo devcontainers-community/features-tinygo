@@ -33,7 +33,7 @@ Feature will also auto-install the [TinyGo VS Code extension] and the official
 To use this feature, all you need to do is add it to your `devcontainer.json`
 like this:
 
-```json
+```jsonc
 // devcontainer.json
 "features": {
   "ghcr.io/devcontainers-community/features/tinygo": {}
