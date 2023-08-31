@@ -1,7 +1,7 @@
 {
     "name": "Tiny Go (no sudo)",
     "id": "tinygo",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A feature to install tiny go (no sudo)",
     "documentationURL": "https://github.com/devcontainers-community/features-tinygo#readme",
     "options": {
