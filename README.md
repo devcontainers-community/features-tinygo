@@ -1,4 +1,6 @@
-# TinyGo
+[⬅️ Back to feature collection](https://github.com/devcontainers-community/features/)
+
+# TinyGo Dev Container Feature
 
 🤏 Installs tinygo from [tinygo-org/tinygo]
 
