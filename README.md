@@ -50,7 +50,7 @@ with the `version` option:
 ```jsonc
 "features": {
   "ghcr.io/devcontainers-community/features/tinygo": {
-    "version": ""
+    "version": "0.29.0"
   }
 }
 ```
