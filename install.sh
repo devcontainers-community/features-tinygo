@@ -29,7 +29,7 @@ if [[ ${VERSION:-latest} == latest ]]; then
   VERSION=$(curl \
     -fsSL https://github.com/tinygo-org/tinygo/releases/latest \
     -w '%{url_effective}' -o /dev/null \
-    | sed -nr 's/\/v(.*)$/\1/p')
+    | grep -oP '\d+\.\d+\.\d+$')
 fi
 
 url="https://github.com/tinygo-org/tinygo/releases/download/v$VERSION/tinygo_${VERSION}_$arch.deb"
