@@ -1,7 +1,7 @@
 {
     "name": "Tiny Go (no sudo)",
     "id": "tinygo",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "A feature to install tiny go (no sudo)",
     "options": {
         "version": {
@@ -10,19 +10,15 @@
             "description": "Specify a version of Tiny Go"
         }
     },
-    "installsAfter": [
-        "ghcr.io/devcontainers/features/rust",
-        "cargo_binstall"
-    ],
+    "dependsOn": {
+        "ghcr.io/devcontainers/features/go": {}
+    },
     "customizations": {
         "vscode": {
             "extensions": [
                 "tinygo.vscode-tinygo",
                 "golang.go"
-            ],
-            "features": {
-                "ghcr.io/devcontainers/features/go:1": {}
-            }
+            ]
         }
     }
 }
