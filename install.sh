@@ -23,8 +23,9 @@ check_packages curl ca-certificates
 arch=$(dpkg --print-architecture)
 
 if [[ ${VERSION:-latest} == latest ]]; then
-  # .../releases/latest redirects to /releases/tag/v1.2.3
-  # https://stackoverflow.com/questions/58379142/grep-how-to-output-only-the-content-of-a-capturing-group
+  # /releases/latest redirects to /releases/tag/v1.2.3 on GitHub.
+  # https://stackoverflow.com/a/3077316/19522682
+  # https://stackoverflow.com/a/58379307/19522682
   VERSION=$(curl \
     -fsSL https://github.com/tinygo-org/tinygo/releases/latest \
     -w '%{url_effective}' -o /dev/null \
