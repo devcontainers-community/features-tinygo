@@ -1,22 +1,42 @@
 #!/bin/bash
 set -ex
 
-echo "Activating feature 'Tiny Go'"
+# https://github.com/devcontainers/features/blob/038bed3d58a84885da8a008b80905da17d57a543/src/node/install.sh#L66
+apt_get_update() {
+    if [ "$(find /var/lib/apt/lists/* | wc -l)" = "0" ]; then
+        echo "Running apt-get update..."
+        apt-get update -y
+    fi
+}
 
-# Tiny Go version
-VERSION=${VERSION:-"0.28.1"}
-ARCHITECTURE="amd64"
+# https://github.com/devcontainers/features/blob/038bed3d58a84885da8a008b80905da17d57a543/src/node/install.sh#L74
+# Checks if packages are installed and installs them if not
+check_packages() {
+    if ! dpkg -s "$@" > /dev/null 2>&1; then
+        apt_get_update
+        apt-get -y install --no-install-recommends "$@"
+    fi
+}
 
-if [ "$(dpkg --print-architecture)" ==  "arm64" ]; then
-    ARCHITECTURE="arm64"
+check_packages curl ca-certificates
+
+arch=$(dpkg --print-architecture)
+
+if [[ ${VERSION:-latest} == latest ]]; then
+  # /releases/latest redirects to /releases/tag/v1.2.3 on GitHub.
+  # https://stackoverflow.com/a/3077316/19522682
+  # https://stackoverflow.com/a/58379307/19522682
+  VERSION=$(curl \
+    -fsSL https://github.com/tinygo-org/tinygo/releases/latest \
+    -w '%{url_effective}' -o /dev/null \
+    | grep -oP '\d+\.\d+\.\d+$')
 fi
 
-apt update
-apt install -y curl
+url="https://github.com/tinygo-org/tinygo/releases/download/v$VERSION/tinygo_${VERSION}_$arch.deb"
 
-LOCALFILE="/tmp/tinygo_${VERSION}_${ARCHITECTURE}.deb"
-TINYURL="https://github.com/tinygo-org/tinygo/releases/download/v${VERSION}/tinygo_${VERSION}_${ARCHITECTURE}.deb"
+curl -fsSL "$url" -o tinygo.deb
+dpkg -i tinygo.deb
+rm tinygo.deb
 
-curl -Lo ${LOCALFILE} ${TINYURL}
-dpkg -i  ${LOCALFILE}
-rm  ${LOCALFILE}
+# Clean up
+rm -rf /var/lib/apt/lists/*

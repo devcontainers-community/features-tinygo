@@ -1,28 +1,26 @@
 {
     "name": "TinyGo",
     "id": "tinygo",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "🤏 Installs tinygo from tinygo-org/tinygo",
+    "documentationURL": "https://github.com/devcontainers-community/features-tinygo#readme",
     "options": {
         "version": {
             "type": "string",
-            "default": "0.28.1",
-            "description": "Specify a version of Tiny Go"
+            "proposals": ["latest", "0.29.0", "0.28.1"],
+            "default": "latest",
+            "description": "A specific 1.2.3 version number of TinyGo to install"
         }
     },
-    "installsAfter": [
-        "ghcr.io/devcontainers/features/rust",
-        "cargo_binstall"
-    ],
+    "dependsOn": {
+        "ghcr.io/devcontainers/features/go": {}
+    },
     "customizations": {
         "vscode": {
             "extensions": [
                 "tinygo.vscode-tinygo",
                 "golang.go"
-            ],
-            "features": {
-                "ghcr.io/devcontainers/features/go:1": {}
-            }
+            ]
         }
     }
 }
