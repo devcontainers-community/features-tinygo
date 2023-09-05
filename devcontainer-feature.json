@@ -7,8 +7,9 @@
     "options": {
         "version": {
             "type": "string",
-            "default": "0.28.1",
-            "description": "Specify a version of Tiny Go"
+            "proposals": ["latest", "0.29.0", "0.28.1"],
+            "default": "latest",
+            "description": "A specific 1.2.3 version number of TinyGo to install"
         }
     },
     "installsAfter": [
