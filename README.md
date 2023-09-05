@@ -25,7 +25,7 @@
 This Dev Container Feature will install TinyGo using the official `.deb` from
 the [TinyGo Releases page]. You are then able to use `tinygo` as normal! This
 Feature will also auto-install the [TinyGo VS Code extension] and the official
-[Golang VS Code extension]. Happy Gophering! 🐿
+[Golang VS Code extension]. Happy Gophering! 🐿️
 
 ## Usage
 
